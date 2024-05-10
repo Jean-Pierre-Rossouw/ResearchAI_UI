@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
 )
 
-# TODO: Setup LLM via RemoteRunnable
+LLM = RemoteRunnable("https://ripe-guinevere-analyticxlabs-1c840ade.koyeb.app/report/")
 
 # Page Title
 st.markdown(
@@ -41,7 +41,7 @@ with st.sidebar:
 if prompt := st.text_input("Enter research question...", key="Input"):
     with st.spinner("Generating research report..."):
         try:
-            report = "Generated report"
+            report = LLM.invoke({"question": prompt})
             st.session_state["report"].append(report)
         except Exception as e:
             st.error(f"Error generating report: {e}")
