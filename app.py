@@ -8,6 +8,15 @@ st.set_page_config(
     layout="wide",
 )
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 LLM = RemoteRunnable("https://ripe-guinevere-analyticxlabs-1c840ade.koyeb.app/report/")
 
 # Page Title
